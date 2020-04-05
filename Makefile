@@ -4,4 +4,6 @@ all:
 	pip install pyinstaller
 	pyinstaller --onefile --windowed arith.py
 	mv dist/arith .
-
+	rm -rf arith.spec
+	rm -rf ./dist
+	rm -rf ./build
