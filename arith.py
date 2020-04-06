@@ -13,7 +13,7 @@ class Token:
 
 #Lexer Class
 #Lexer reads input string and splits into tokens
-#class Lexer:
+class Lexer:
 
     #Lexer "constructor"
     def __init__(self, expression):
@@ -21,18 +21,21 @@ class Token:
         self.index = 0
         self.current = self.expression[index]
 
+    #To help in iterating through expression
     def nextChar(self):
         self.index += 1
 
         if(self.index) > len(self.expression):
             self.current = 'None'
-        else
+        else:
             self.current = self.expression[index]
     
+    #Removing white spaces
     def removeSpace(self):
         while self.current is not None and self.current.isspace():
             self.nextChar
 
+    #Accounting for multi-digit operands
     def multipleDigits(self):
         operand = ''
         while self.current.isdigit() and self.current is not None:
@@ -48,7 +51,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
 
