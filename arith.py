@@ -13,20 +13,42 @@ class Token:
 
 #Lexer Class
 #Lexer reads input string and splits into tokens
-class Lexer:
+#class Lexer:
 
     #Lexer "constructor"
-    def __init(self, string):
-       print('') 
+    def __init__(self, expression):
+        self.expression = self
+        self.index = 0
+        self.current = self.expression[index]
+
+    def nextChar(self):
+        self.index += 1
+
+        if(self.index) > len(self.expression):
+            self.current = 'None'
+        else
+            self.current = self.expression[index]
+    
+    def removeSpace(self):
+        while self.current is not None and self.current.isspace():
+            self.nextChar
+
+    def multipleDigits(self):
+        operand = ''
+        while self.current.isdigit() and self.current is not None:
+            operand += self.current
+            self.nextChar
+
+        return int(operand)
+
 
 def main():
     while True:
-        expression = raw_input("Enter expression: ")
-
+        expression = raw_input("")
 
 if __name__ == "__main__":
     main()
-    
+
 
 
 
