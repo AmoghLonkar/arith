@@ -37,7 +37,6 @@ class Lexer:
             self.current = 'None'
         else:
             self.current = self.expression[self.index]
-        print(type(self.current))
 
     #Accounting for multi-digit operands
     def intVal(self):
@@ -53,35 +52,24 @@ class Lexer:
         while self.current is not None:
 
             if self.current.isdigit():
-                temp = Token('Integer', self.intVal())
-                temp.printToken()
                 return Token('Integer', self.intVal())
             elif self.current == '+':
-                temp = Token('Add', self.current)
-                temp.printToken()
                 return Token('Add', self.current)
             elif self.current == '-':
-                temp = Token('Sub', self.current)
-                temp.printToken()
                 return Token('Sub', self.current)
             elif self.current == '*':
-                temp = Token('Mul', self.current)
-                temp.printToken()
                 return Token('Mul', self.current)
             
             #Removing white spaces
             elif self.current.isspace():
                 self.nextChar
 
-        temp = Token('EOF', None)
-        temp.printToken()
         return Token('EOF', None)    
 
 def main():
     while True:
         expression = raw_input("")
-        string = Lexer(expression)
-        token = string.exprToToken()
+        tokens = Lexer(expression)
 
 if __name__ == "__main__":
     main()
