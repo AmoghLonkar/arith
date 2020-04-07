@@ -98,7 +98,7 @@ class Parser(object):
         """factor grammar: INTEGER"""
         token = self.current_token
         if token.type == 'Integer':
-            self.verifyType(token)
+            self.verifyType('Integer')
             return Num(token)
 
     def term(self):
@@ -165,7 +165,7 @@ class Interpreter(NodeVisitor):
 
 def main():
     while True:
-        expression = raw_input("")
+        expression = input("")
         tokens = Lexer(expression)
         parser = Parser(tokens)
         interpreter = Interpreter(parser)
