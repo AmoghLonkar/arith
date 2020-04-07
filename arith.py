@@ -21,10 +21,9 @@ class Lexer:
 
     #Lexer "constructor"
     def __init__(self, expression):
-        self.expression = self
+        self.expression = expression
         self.index = 0
         self.current = self.expression[self.index]
-        print(type(self.current))
 
     def __getitem__(self, index):
         return self.index
@@ -50,7 +49,6 @@ class Lexer:
     #Iterating through expression and converting into tokens
     def exprToToken(self):
         while self.current is not None:
-
             if self.current.isdigit():
                 return Token('Integer', self.intVal())
             elif self.current == '+':
