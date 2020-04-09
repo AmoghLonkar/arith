@@ -31,8 +31,7 @@ class Lexer:
     #To help in iterating through expression
     def nextChar(self):
         self.index += 1
-
-        if(self.index) > len(self.expression):
+        if(self.index) > len(self.expression) - 1:
             self.current = 'None'
         else:
             self.current = self.expression[self.index]
@@ -48,21 +47,27 @@ class Lexer:
 
     #Iterating through expression and converting into tokens
     def exprToToken(self):
-        while self.current is not None:
+        if self.current == 'None':
+            return Token('EOF', 'None')
+            
+        while self.current is not 'None':
             if self.current.isdigit():
                 return Token('Integer', self.intVal())
             elif self.current == '+':
-                return Token('Add', self.current)
+                self.nextChar()
+                return Token('Add', '+')
             elif self.current == '-':
-                return Token('Sub', self.current)
+                self.nextChar()
+                return Token('Sub', '-')
             elif self.current == '*':
-                return Token('Mul', self.current)
+                self.nextChar()
+                return Token('Mul', '*')
 
             #Removing white spaces
             elif self.current.isspace():
                 self.nextChar()
-
-        return Token('EOF', None)
+                continue
+        
 
 class BinOP(object):
     def __init__(self, left, op, right):
@@ -91,6 +96,7 @@ class Parser(object):
     def verifyType(self, token_type):
         if self.current_token.type == token_type:
             self.current_token = self.lexer.exprToToken()
+
         else:
             self.error()
 
@@ -165,7 +171,7 @@ class Interpreter(NodeVisitor):
 
 def main():
     while True:
-        expression = input("")
+        expression = raw_input("")
         tokens = Lexer(expression)
         parser = Parser(tokens)
         interpreter = Interpreter(parser)
