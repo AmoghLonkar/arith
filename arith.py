@@ -49,7 +49,7 @@ class Lexer:
     def exprToToken(self):
         if self.current == 'None':
             return Token('EOF', 'None')
-            
+
         while self.current is not 'None':
             if self.current.isdigit():
                 return Token('Integer', self.intVal())
@@ -67,12 +67,12 @@ class Lexer:
             elif self.current.isspace():
                 self.nextChar()
                 continue
-        
+
 
 class BinOP(object):
     def __init__(self, left, op, right):
         self.left = left
-        self.token = op
+        self.token = self.op = op
         self.right = right
 
 class Num(object):
@@ -152,7 +152,7 @@ class Interpreter(NodeVisitor):
     def __init__(self, parser):
         self.parser = parser
 
-    def visit_BinOp(self, node):
+    def visit_BinOP(self, node):
         if node.op.type == 'Plus':
             return self.visit(node.left) + self.visit(node.right)
         elif node.op.type == 'Minus':
@@ -171,7 +171,7 @@ class Interpreter(NodeVisitor):
 
 def main():
     while True:
-        expression = raw_input("")
+        expression = input("")
         tokens = Lexer(expression)
         parser = Parser(tokens)
         interpreter = Interpreter(parser)
