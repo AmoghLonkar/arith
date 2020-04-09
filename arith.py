@@ -44,18 +44,30 @@ class Lexer:
             self.nextChar()
 
         return int(operand)
-
+        
+    
+    
+    #Checking for negative numbers
+    def negInt(self):
+        if self.current == '-' and self.expression[self.index + 1].isdigit():
+            self.nextChar()
+            value = self.intVal() * -1
+        return value
+            
     #Iterating through expression and converting into tokens
     def exprToToken(self):
         while self.current is not None:
             if self.current.isdigit():
                 return Token('Integer', self.intVal())
 
+            if self.current == '-' and self.expression[self.index + 1].isdigit():
+                return Token('Integer', self.negInt())
+            
             if self.current == '+':
                 self.nextChar()
                 return Token('Add', '+')
 
-            if self.current == '-':
+            if self.current == '-' and self.expression[self.index + 1].isspace():
                 self.nextChar()
                 return Token('Sub', '-')
 
@@ -171,12 +183,12 @@ class Interpreter(NodeVisitor):
 
 def main():
     while True:
-        expression = input("")
+        expression = raw_input("")
         tokens = Lexer(expression)
         parser = Parser(tokens)
         interpreter = Interpreter(parser)
         result = interpreter.interpret()
-        print(result)
+        print(str(result))
 
 if __name__ == "__main__":
     main()
