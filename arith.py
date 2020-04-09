@@ -183,12 +183,19 @@ class Interpreter(NodeVisitor):
 
 def main():
     while True:
-        expression = raw_input("")
+        try:
+            expression = raw_input()
+        except EOFError:
+            break
+
         tokens = Lexer(expression)
         parser = Parser(tokens)
         interpreter = Interpreter(parser)
         result = interpreter.interpret()
-        print(str(result))
+        print(result)
+
+        #except (EOFError):
+        #    break
 
 if __name__ == "__main__":
     main()
