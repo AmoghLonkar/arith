@@ -32,14 +32,14 @@ class Lexer:
     def nextChar(self):
         self.index += 1
         if(self.index) > len(self.expression) - 1:
-            self.current = 'None'
+            self.current = None#'None'
         else:
             self.current = self.expression[self.index]
 
     #Accounting for multi-digit operands
     def intVal(self):
         operand = ''
-        while self.current.isdigit() and self.current is not None:
+        while self.current is not None and self.current.isdigit():
             operand += self.current
             self.nextChar()
 
@@ -47,27 +47,28 @@ class Lexer:
 
     #Iterating through expression and converting into tokens
     def exprToToken(self):
-        if self.current == 'None':
-            return Token('EOF', 'None')
-
-        while self.current is not 'None':
+        while self.current is not None:
             if self.current.isdigit():
                 return Token('Integer', self.intVal())
-            elif self.current == '+':
+
+            if self.current == '+':
                 self.nextChar()
                 return Token('Add', '+')
-            elif self.current == '-':
+
+            if self.current == '-':
                 self.nextChar()
                 return Token('Sub', '-')
-            elif self.current == '*':
+
+            if self.current == '*':
                 self.nextChar()
                 return Token('Mul', '*')
 
             #Removing white spaces
-            elif self.current.isspace():
+            if self.current.isspace():
                 self.nextChar()
                 continue
 
+        return Token('EOF', None)
 
 class BinOP(object):
     def __init__(self, left, op, right):
@@ -96,7 +97,6 @@ class Parser(object):
     def verifyType(self, token_type):
         if self.current_token.type == token_type:
             self.current_token = self.lexer.exprToToken()
-
         else:
             self.error()
 
@@ -123,12 +123,12 @@ class Parser(object):
     def expr(self):
         node = self.term()
 
-        while self.current_token.type in ('Plus','Minus'):
+        while self.current_token.type in ('Add','Sub'):
             token = self.current_token
-            if token.type == 'Plus':
-                self.verifyType('Plus')
-            elif token.type == 'Minus':
-                self.verifyType('Minus')
+            if token.type == 'Add':
+                self.verifyType('Add')
+            elif token.type == 'Sub':
+                self.verifyType('Sub')
 
             node = BinOP(left=node, op=token, right=self.term())
 
@@ -153,9 +153,9 @@ class Interpreter(NodeVisitor):
         self.parser = parser
 
     def visit_BinOP(self, node):
-        if node.op.type == 'Plus':
+        if node.op.type == 'Add':
             return self.visit(node.left) + self.visit(node.right)
-        elif node.op.type == 'Minus':
+        elif node.op.type == 'Sub':
             return self.visit(node.left) - self.visit(node.right)
         elif node.op.type == 'Mul':
             return self.visit(node.left) * self.visit(node.right)
