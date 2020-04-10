@@ -1,0 +1,152 @@
+commit afd874c11d2657a5ade3246a3911a72173160a73
+Author: AmoghLonkar <alonkar@trashpanda.soe.ucsc.edu>
+Date:   Thu Apr 9 20:28:09 2020 -0700
+
+    Break on EOFError
+
+commit d185d765ffb7d4cca5413c35fb0f94339e5e5d55
+Merge: 35404b8 a33d913
+Author: AmoghLonkar <alonkar@trashpanda.soe.ucsc.edu>
+Date:   Thu Apr 9 20:24:11 2020 -0700
+
+    Merge branch 'master' of https://github.com/AmoghLonkar/arith
+
+commit a33d913b869e11fd2310bbcad4d6c00ef9f0daa5
+Author: lionely <lionelscotty95@gmail.com>
+Date:   Thu Apr 9 17:05:36 2020 -0700
+
+    Removed unneccessarycode
+
+commit 35404b8839fecdea8035daa953c786ecedda6789
+Author: AmoghLonkar <alonkar@trashpanda.soe.ucsc.edu>
+Date:   Thu Apr 9 16:30:10 2020 -0700
+
+    Removed EOFError
+
+commit c821b88f00c011006e1a6f45ad32bd289fd7ac05
+Author: Amogh Lonkar <35778429+AmoghLonkar@users.noreply.github.com>
+Date:   Thu Apr 9 15:04:09 2020 -0700
+
+    Change 'How To Run' section of readme
+
+commit 48551529348a6043c0aac601abcf2cbd149ca103
+Author: Amogh Lonkar <35778429+AmoghLonkar@users.noreply.github.com>
+Date:   Thu Apr 9 14:53:45 2020 -0700
+
+    Updated readme
+
+commit 0ff24056fde2e0309506c86a5f890ecf83a93b95
+Author: AmoghLonkar <alonkar@trashpanda.soe.ucsc.edu>
+Date:   Thu Apr 9 14:36:58 2020 -0700
+
+    Adding own test cases
+
+commit c3e7b8951637739f030cb0efc143bcebbdde463f
+Author: AmoghLonkar <alonkar@trashpanda.soe.ucsc.edu>
+Date:   Thu Apr 9 14:19:44 2020 -0700
+
+    Adding negative operands in lexer
+
+commit ec5c7095cd1706503d388bf91338130341b33b71
+Author: lionely <lionelscotty95@gmail.com>
+Date:   Wed Apr 8 23:10:11 2020 -0700
+
+    Fixed addition, misnamed references.
+
+commit e62b0234eac2a9523b820dd08395f496cbb6bb2e
+Author: lionely <lionelscotty95@gmail.com>
+Date:   Wed Apr 8 20:20:37 2020 -0700
+
+    Multiplcation seems to work. Forgot to add property for operation in BinOP
+
+commit 8c1e18caa4716185f14c5c59dd36ceb28e1b763c
+Author: AmoghLonkar <alonkar@trashpanda.soe.ucsc.edu>
+Date:   Wed Apr 8 19:53:01 2020 -0700
+
+    Lexer works, removed traversal problem
+
+commit 3d75625bd028c61ad8257439670f0e93b4b3223d
+Author: lionely <lionelscotty95@gmail.com>
+Date:   Tue Apr 7 16:55:12 2020 -0700
+
+    Was passing token instead of "Integer".
+
+commit 8530a39c2059d7c75d13eb1b2c53ece82e2f6398
+Author: AmoghLonkar <alonkar@trashpanda.soe.ucsc.edu>
+Date:   Tue Apr 7 16:07:36 2020 -0700
+
+    Fixed isdigit error in Lexer
+
+commit 2d93e0b7443d3cdc82d54e752f40a8bbab611e42
+Author: lionely <lionelscotty95@gmail.com>
+Date:   Mon Apr 6 19:23:51 2020 -0700
+
+    Added parser and interpreter based on ruslan blog post.
+
+commit 270e79d638fd2ad15dfdb918dc37e5bd5bcbd740
+Author: AmoghLonkar <alonkar@trashpanda.soe.ucsc.edu>
+Date:   Mon Apr 6 11:21:03 2020 -0700
+
+    Working Lexer
+
+commit 5daaefb2ed5fac21488f65c1f137caabb6469709
+Author: AmoghLonkar <alonkar@trashpanda.soe.ucsc.edu>
+Date:   Mon Apr 6 10:47:26 2020 -0700
+
+    Raw input type string but char type int
+
+commit 382901dc94908c6353bb9bbadcd557da475e97db
+Author: AmoghLonkar <alonkar@trashpanda.soe.ucsc.edu>
+Date:   Sun Apr 5 22:51:26 2020 -0700
+
+    Removing some compile errors and adding comments
+
+commit 6f6b4a0d09231a5c1fc225a8fba6b19b8a917ec6
+Author: AmoghLonkar <alonkar@trashpanda.soe.ucsc.edu>
+Date:   Sun Apr 5 22:40:21 2020 -0700
+
+    Added some member functions to Lexer class
+
+commit 3fe618d367d0da14f53468e16c3aadba13780330
+Author: AmoghLonkar <alonkar@trashpanda.soe.ucsc.edu>
+Date:   Sun Apr 5 17:55:14 2020 -0700
+
+    Bare bones token class implemented
+
+commit 1bfa01498bcec15a76caab4c73853768037eacdf
+Author: AmoghLonkar <alonkar@trashpanda.soe.ucsc.edu>
+Date:   Sun Apr 5 10:40:34 2020 -0700
+
+    Removing directories dist and build created by make
+
+commit f59c1d1ccd503fbf44e70fb5f7b90944fda0512e
+Author: AmoghLonkar <alonkar@trashpanda.soe.ucsc.edu>
+Date:   Sun Apr 5 10:37:39 2020 -0700
+
+    Small change to makefile
+
+commit 03b33ecc31506d7640d815cdf39aac0b6cc26e52
+Author: AmoghLonkar <alonkar@trashpanda.soe.ucsc.edu>
+Date:   Sun Apr 5 10:36:04 2020 -0700
+
+    Basic working makefile
+
+commit d1fdcd41692c43e36be9f1f0afdab98774a2a865
+Author: AmoghLonkar <alonkar@trashpanda.soe.ucsc.edu>
+Date:   Sat Apr 4 14:10:55 2020 -0700
+
+    Adding makefile and arith.py
+
+commit fa0855159b0d8a262d82ba037f58b0f02e232fd8
+Author: Amogh Lonkar <35778429+AmoghLonkar@users.noreply.github.com>
+Date:   Sat Apr 4 13:53:26 2020 -0700
+
+    Add files via upload
+    
+    Adding test case files
+
+commit c8e1dc3570aab8553bf0f87a86c573ae354d6480
+Author: Amogh Lonkar <35778429+AmoghLonkar@users.noreply.github.com>
+Date:   Sat Apr 4 13:49:30 2020 -0700
+
+    Initial commit
