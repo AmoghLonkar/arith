@@ -44,16 +44,16 @@ class Lexer:
             self.nextChar()
 
         return int(operand)
-        
-    
-    
+
+
+
     #Checking for negative numbers
     def negInt(self):
         if self.current == '-' and self.expression[self.index + 1].isdigit():
             self.nextChar()
             value = self.intVal() * -1
         return value
-            
+
     #Iterating through expression and converting into tokens
     def exprToToken(self):
         while self.current is not None:
@@ -62,7 +62,7 @@ class Lexer:
 
             if self.current == '-' and self.expression[self.index + 1].isdigit():
                 return Token('Integer', self.negInt())
-            
+
             if self.current == '+':
                 self.nextChar()
                 return Token('Add', '+')
@@ -102,10 +102,6 @@ class Parser(object):
         # set current token to the first token taken from the input
         self.current_token = self.lexer.exprToToken()
 
-    # For terms not in our language
-    def error(self):
-        raise Exception('Invalid syntax')
-
     def verifyType(self, token_type):
         if self.current_token.type == token_type:
             self.current_token = self.lexer.exprToToken()
@@ -113,7 +109,6 @@ class Parser(object):
             self.error()
 
     def factor(self):
-        """factor grammar: INTEGER"""
         token = self.current_token
         if token.type == 'Integer':
             self.verifyType('Integer')
@@ -122,12 +117,10 @@ class Parser(object):
     def term(self):
         node = self.factor()# get left term
 
-        while self.current_token.type in ('Mul', 'Div'):
+        while self.current_token.type in ('Mul'):
             token = self.current_token #move to next tokens
             if token.type == 'Mul':
                 self.verifyType('Mul')
-            elif token.type == 'Div':
-                self.verifyType('Div')
 
             node = BinOP(left=node, op=token, right=self.factor())
         return node
@@ -171,8 +164,6 @@ class Interpreter(NodeVisitor):
             return self.visit(node.left) - self.visit(node.right)
         elif node.op.type == 'Mul':
             return self.visit(node.left) * self.visit(node.right)
-        elif node.op.type == 'Div':
-            return self.visit(node.left) // self.visit(node.right)
 
     def visit_Num(self, node):
         return node.value
